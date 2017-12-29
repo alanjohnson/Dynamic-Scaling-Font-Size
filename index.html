@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dynamic css fonts</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #4d4d4d;
+      }
+      label, #submitter {
+        display: block;
+        margin-top: 30px;
+      }
+      #final_css {
+        margin-top: 30px;
+        background: #efefef;
+        padding: 20px;
+      }
+      #demo {
+      position: relative;
+       background: #ffffee;
+       padding: 20px;
+      }
+      #demospan {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+      }
+      .myFontsClass {
+        font-size: 20px;
+      }
+      @media (min-width: 320px) {
+        .myFontsClass {
+          font-size: calc( 7.352941176470589vw + -3.529411764705884px );
+        }
+      }
+      @media (min-width: 1000px) {
+        .myFontsClass {
+          font-size: 70px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo">
+      <span id="demospan">demo:</span>
+      <span class="myFontsClass">
+        Dynamic font scale with range.
+      </span>
+    </div>
+    <p>Just a basic tool I use to calculate out the css necessary for dynamic font scaling within a range (a minimum and maximum font size).</p>
+
+  <p>
+    1) You set a range for the browser size:  i.e. 320px to 1000px
+    </br/>
+    2) and define the smallest and largest font sizes (i.e. what font size at 320px, and what at 1000px)
+    <br/>
+    3) The result is a font that will scale smoothly between the two font sizes while the browser is scaled.  hitting a min and max limit to avoid a font getting too large, or too small.
+  </p>
+    </p>
+    <label for="min_font">What is the minimum font size you want?</label>
+    <input id="min_font" value="74" type="text" />px
+    <label for="min_width">How many pixels wide will the viewport be when it hits this font size?</label>
+    <input id="min_width" value="320" type="text" />px
+    <label for="max_font">What is the maximum font size you want?</label>
+    <input id="max_font" value="140" type="text" />px
+    <label for="max_width">How many pixels wide will the viewport be when it hits this font size?</label>
+    <input id="max_width" value="1000" type="text" />px
+
+    <input id="submitter" type="submit" value="calculate" />
+
+    <p>
+      Below is the needed css, just paste this in the stylesheet, and enjoy your dynamic scaling font size for responsive designs.
+    </p>
+    <div id="final_css"></div>
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+    <script src="js/main.js"></script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+    </script>
+  </body>
+</html>
